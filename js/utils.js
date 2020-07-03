@@ -28,3 +28,18 @@ function getDimensionValue(){
 function getMsjErrorForm() {
     return document.getElementById('errorForm')
 }
+
+function getBoard() {
+    return document.getElementById('board')
+}
+
+function randomNumber() {
+    return Math.floor(Math.random() * alphabet.length);
+}
+
+function getRandomLetter() {
+    let p = document.createElement('p')
+    p.innerText = alphabet[randomNumber()]
+    return p
+}
+
