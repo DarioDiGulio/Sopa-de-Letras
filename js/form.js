@@ -21,6 +21,7 @@ function cleanForm() {
   getDimensions().value = 5;
   getDiagonals().checked = false;
   getDimensionValue().innerHTML = 0;
+  hideErrorForm()
 }
 
 function setDimensionValue() {

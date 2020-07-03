@@ -1,3 +1,14 @@
 textarea{
     resize: none;
 }
+
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+
+button, .uk-button{
+    border-radius: 5px !important;
+}

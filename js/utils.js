@@ -21,7 +21,7 @@ function getDiagonals() {
     return document.getElementById('diagonals')
 }
 
-function getDimensionValue(){
+function getDimensionValue() {
     return document.getElementById('dimensionValue')
 }
 
@@ -33,13 +33,23 @@ function getBoard() {
     return document.getElementById('board')
 }
 
-function randomNumber() {
-    return Math.floor(Math.random() * alphabet.length);
+function randomNumber(max) {
+    return Math.floor(Math.random() * max);
 }
 
 function getRandomLetter() {
     let p = document.createElement('p')
-    p.innerText = alphabet[randomNumber()]
+    p.className = 'boardLetter'
+    p.innerText = alphabet[randomNumber(alphabet.length)]
     return p
 }
 
+function getStatus() {
+    return document.getElementById('status')
+}
+
+function createStatusElement(status) {
+    let statusElement = document.createElement('span')
+    statusElement.className = `uk-label uk-label-${status}`
+    return statusElement
+}
