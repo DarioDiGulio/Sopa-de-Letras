@@ -24,3 +24,7 @@ function getDiagonals() {
 function getDimensionValue(){
     return document.getElementById('dimensionValue')
 }
+
+function getMsjErrorForm() {
+    return document.getElementById('errorForm')
+}
