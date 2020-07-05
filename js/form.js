@@ -48,6 +48,12 @@ function showErrorForm(message) {
 }
 
 function hideErrorForm() {
-    let msjError = getMsjErrorForm();
-    msjError.hidden = true;
+  let msjError = getMsjErrorForm();
+  msjError.hidden = true;
 }
+
+/**
+ * @TODO eliminar ascentos y caracteres extraños
+ * @TODO validar que no haya palabras repetidas
+ * @TODO relación entre dimensión y cantidad de palabras
+ */

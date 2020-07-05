@@ -4,21 +4,62 @@ let words = []
 let notFound = []
 let found = []
 let boardLetters = []
+let leftBorders = []
+let rightBorders = []
+let topBorders = []
+let bottomBorders = []
 
 
 function generate() {
   if (fetchData()) {
     generateRandomBoard()
+    disableGenerate()
+    setBorders()
     setInitialStatus()
     insertWords()
   }
+
 }
 
-/**
- * @TODO eliminar ascentos y caracteres extraños 
- * @TODO validar que no haya palabras repetidas
- * @TODO relación entre dimensión y cantidad de palabras
- */
+function disableGenerate() {
+  document.getElementById('generateButton').setAttribute('disabled', true)
+}
+
+function setBorders() {
+  setTopBorders()
+  setLeftBorders()
+  setBottomBorders()
+  setRightBorders()
+}
+
+function setTopBorders() {
+  for (let i = 0; i < parseInt(dimensions); i++) {
+    topBorders.push(i)
+  }
+}
+
+function setBottomBorders() {
+  let index = leftBorders[leftBorders.length - 1]
+  for (let i = 0; i < parseInt(dimensions); i++) {
+    bottomBorders.push(index)
+    index++
+  }
+}
+
+function setLeftBorders() {
+  let index = 0
+  for (let i = 0; i < parseInt(dimensions); i++) {
+    leftBorders.push(index)
+    index = index + parseInt(dimensions)
+  }
+}
+
+function setRightBorders() {
+  for (let i = 0; i < parseInt(dimensions); i++) {
+    rightBorders.push(leftBorders[i] + (parseInt(dimensions) - 1))
+  }
+}
+
 function fetchData() {
   let valid = isValid()
   if (valid) {
@@ -50,18 +91,4 @@ function setInitialStatus() {
     statusElement.innerHTML = word
     status.appendChild(statusElement)
   }
-}
-
-function insertWords() {
-  boardLetters = document.getElementsByClassName('boardLetter')
-  alowCross ? insertWordsUnCross() : insertWordsCross()
-}
-
-function insertWordsUnCross() {
-  let randomNumber = randomNumber(boardLetters.length)
-  
-}
-
-function insertWordsCross() {
-
 }
