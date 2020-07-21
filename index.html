@@ -45,22 +45,21 @@
     <div class="uk-text-center" uk-grid>
         <div class="uk-width-auto">
             <div class="uk-card uk-card-default uk-card-body">
-                <form>
+                <form id="board-form">
                     <fieldset class="uk-fieldset">
                         <legend class="uk-legend">Comenzar</legend>
                         <div class="uk-margin">
                             <label>
                                 Dimensiones
-                                <input class="uk-range" type="range" value="5" min="5" max="20" step="1" id="dimensions"
-                                    onchange="setDimensionValue()">
+                                <input class="uk-range" type="range" value="5" min="5" max="20" step="1"
+                                    id="dimensions">
                                 <span class="uk-badge uk-label-success" id="dimensionValue">5</span>
                             </label>
                         </div>
                         <div class="uk-inline">
                             <div class="uk-inline">
-                                <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: plus" onclick="setWords()"></a>
-                                <input class="uk-input" placeholder="Ingresá una palabra" type="text" id="inputWords"
-                                    onkeyup="this.value = this.value.toUpperCase();">
+                                <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: plus" id="add-word"></a>
+                                <input class="uk-input" placeholder="Ingresá una palabra" type="text" id="inputWords">
                             </div>
                             <p class="uk-text-danger" hidden id="errorSetWord">Valor incorrecto o insuficiente</p>
                         </div>
@@ -68,7 +67,7 @@
                             <textarea class="uk-textarea" rows="5" placeholder="Palabras ingresadas" id="areaWords"
                                 disabled></textarea>
                         </div>
-                        <a class="uk-button uk-button-danger" uk-tooltip="Limpiar" onclick="cleanForm()">
+                        <a class="uk-button uk-button-danger" uk-tooltip="Limpiar" id="clean-button">
                             <span uk-icon="icon: history"></span>
                         </a>
                         <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
@@ -78,7 +77,7 @@
                     </fieldset>
                 </form>
                 <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
-                    onclick="generate()" id="generateButton">Generar</button>
+                    id="generateButton">Generar</button>
                 <p class="uk-text-danger" hidden id="errorForm"></p>
             </div>
         </div>
@@ -88,11 +87,12 @@
             </div>
             <div id="status"></div>
             <div class="uk-button-group uk-margin">
-                <button class="uk-button uk-button-primary" onclick="location.reload();">Reiniciar</button>
+                <button class="uk-button uk-button-primary" id="restart-button">Reiniciar</button>
                 <button class="uk-button uk-button-danger">Sortear</button>
             </div>
         </div>
     </div>
 </body>
+<script src="js/events.js"></script>
 
 </html>

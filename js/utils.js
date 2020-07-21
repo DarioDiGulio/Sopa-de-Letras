@@ -1,55 +1,26 @@
-let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ',
+/* ----------------- GLOBAL VARS ---------------------- */
+
+const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
-function getInputWords() {
-    return document.getElementById('inputWords')
+/* ----------------- DOM ---------------------- */
+
+const getId = (id) => document.getElementById(id)
+const getClass = (className) => document.getElementsByClassName(className)
+const disableElement = (element) => getId(element).setAttribute('disabled', true)
+const hiddenElement = (idElement) => getId(idElement).hidden = true
+const showElement = (idElement) => getId(idElement).hidden = false
+
+const getRandomLetter = () => {
+    return `<p class="boardLetter">${alphabet[randomNumber(alphabet.length)]}</p>`
 }
 
-function getAreaWords() {
-    return document.getElementById('areaWords')
-}
-
-function getErrorSetWord() {
-    return document.getElementById('errorSetWord')
-}
-
-function getDimensions() {
-    return document.getElementById('dimensions')
-}
-
-function getDiagonals() {
-    return document.getElementById('diagonals')
-}
-
-function getDimensionValue() {
-    return document.getElementById('dimensionValue')
-}
-
-function getMsjErrorForm() {
-    return document.getElementById('errorForm')
-}
-
-function getBoard() {
-    return document.getElementById('board')
-}
-
-function randomNumber(max) {
-    return Math.floor(Math.random() * max);
-}
-
-function getRandomLetter() {
-    let p = document.createElement('p')
-    p.className = 'boardLetter'
-    p.innerText = alphabet[randomNumber(alphabet.length)]
-    return p
-}
-
-function getStatus() {
-    return document.getElementById('status')
-}
-
-function createStatusElement(status) {
+const createStatusElement = (status) => {
     let statusElement = document.createElement('span')
     statusElement.className = `uk-label uk-label-${status}`
     return statusElement
 }
+
+/* ----------------- RANDOM UTILS ---------------------- */
+
+const randomNumber = (max) => Math.floor(Math.random() * max)

@@ -1,59 +1,43 @@
-function setWords() {
-  let inputWords = getInputWords();
-  let areaWords = getAreaWords();
+const setWords = () => {
+  let inputWords = getId('inputWords');
+  let areaWords = getId('areaWords');
   let actuallyWords = areaWords.innerHTML;
   let newWord = inputWords.value.trim().toUpperCase();
   if (newWord !== "" && newWord.length > 1) {
     areaWords.innerHTML =
       actuallyWords.length === 0 ? newWord : actuallyWords + ", " + newWord;
     inputWords.className = "uk-input";
-    getErrorSetWord().hidden = true;
+    hiddenElement('errorSetWord')
     inputWords.value = "";
   } else {
     inputWords.className = inputWords.className + " uk-form-danger";
-    getErrorSetWord().hidden = false;
+    showelement('errorSetWord')
   }
 }
 
-function cleanForm() {
-  getAreaWords().innerHTML = "";
-  getInputWords().value = "";
-  getDimensions().value = 5;
-  getDiagonals().checked = false;
-  getDimensionValue().innerHTML = 0;
+const cleanForm = () => {
+  getId('board-form').reset()
+  getId('areaWords').innerHTML = "";
+  getId('dimensions').value = 5;
+  getId('dimensionValue').innerHTML = 5;
   hideErrorForm()
 }
 
-function setDimensionValue() {
-  getDimensionValue().innerHTML = getDimensions().value;
-}
-
-function isValid() {
-  let isValid = true;
-
-  if (getAreaWords().innerHTML.split(",").length < 2) {
-    isValid = false;
-    showErrorForm("Es necesario que ingreses al menos dos palabras");
-  } else {
-    hideErrorForm()
-  }
-
+const isValid = () => {
+  let isValid = getId('areaWords').innerHTML.split(",").length > 2;
+  isValid ? hiddenElement('errorForm') : showErrorForm("Es necesario que ingreses al menos dos palabras")
   return isValid;
 }
 
-function showErrorForm(message) {
-  let msjError = getMsjErrorForm();
+const showErrorForm = (message) => {
+  let msjError = getId('errorForm');
   msjError.innerText = message;
   msjError.hidden = false;
 }
 
-function hideErrorForm() {
-  let msjError = getMsjErrorForm();
-  msjError.hidden = true;
-}
-
 /**
  * @TODO eliminar ascentos y caracteres extraños
+ * /^[A-Z]+$/
  * @TODO validar que no haya palabras repetidas
  * @TODO relación entre dimensión y cantidad de palabras
  */

@@ -1,5 +1,5 @@
 function insertWords() {
-    boardLetters = document.getElementsByClassName('boardLetter')
+    boardLetters = getClass('boardLetter')
     alowCross ? insertWordsCross(boardLetters) : insertWordsUnCross(boardLetters)
 }
 
@@ -14,8 +14,6 @@ function insertWordsUnCross(boardLetters) {
             number++
         }
     }
-
-
 }
 
 function insertWordsCross(boardLetters) {

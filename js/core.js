@@ -13,16 +13,12 @@ let bottomBorders = []
 function generate() {
   if (fetchData()) {
     generateRandomBoard()
-    disableGenerate()
+    disableElement('generateButton')
     setBorders()
     setInitialStatus()
-    insertWords()
+    // insertWords()
   }
 
-}
-
-function disableGenerate() {
-  document.getElementById('generateButton').setAttribute('disabled', true)
 }
 
 function setBorders() {
@@ -63,9 +59,9 @@ function setRightBorders() {
 function fetchData() {
   let valid = isValid()
   if (valid) {
-    alowCross = getDiagonals().checked
-    dimensions = getDimensions().value
-    let inputWords = getAreaWords().innerHTML.split(',')
+    alowCross = getId('diagonals').checked
+    dimensions = getId('dimensions').value
+    let inputWords = getId('areaWords').innerHTML.split(',')
     for (const word of inputWords) {
       words.push(word)
     }
@@ -75,17 +71,17 @@ function fetchData() {
 }
 
 function generateRandomBoard() {
-  let board = getBoard()
-  let dimensions = getDimensions().value
+  let board = getId('board')
+  let dimensions = getId('dimensions').value
   board.className = `uk-child-width-1-${dimensions}@s uk-grid`
   let dienesionsFull = dimensions * dimensions
   for (let i = 0; i < dienesionsFull; i++) {
-    board.appendChild(getRandomLetter())
+    board.innerHTML += getRandomLetter()
   }
 }
 
 function setInitialStatus() {
-  let status = getStatus()
+  let status = getId('status')
   for (const word of words) {
     let statusElement = createStatusElement('warning')
     statusElement.innerHTML = word
