@@ -1,14 +1,17 @@
-textarea{
-    resize: none;
-}
-
 * {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-button, .uk-button{
-    border-radius: 5px !important;
+button,
+.uk-button,
+input,
+textarea {
+  border-radius: 5px !important;
+}
+
+textarea {
+  resize: vertical;
 }
